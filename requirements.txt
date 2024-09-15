@@ -1,16 +1,22 @@
 #to install all this requirements
 #`pip install -r requirements.txt`
-# rtxa6000 in lab-server(cuda12.1)
+
+# rtx3080ti in lab-pc(cuda11.7)
 numpy==1.23.1
-torch==2.1.1 --index-url https://download.pytorch.org/whl/cu121
-torchvision==0.16.1 --index-url https://download.pytorch.org/whl/cu121
-torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
+torch==2.0.0 
+torchvision==0.15.1 
+torchaudio==2.0.1
+
+# rtxa6000 in lab-server(cuda12.1)
+#numpy==1.23.1
+#torch==2.1.1 --index-url https://download.pytorch.org/whl/cu121
+#torchvision==0.16.1 --index-url https://download.pytorch.org/whl/cu121
+#torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
 
 
 #numpy>=1.18.5
 scipy>=1.4.1 
 chumpy>=0.69
-scikit-image>=0.15 
 opencv-python>=4.1.1 
 scikit-image>=0.15     #skimage
 PyYAML==5.1.1         
