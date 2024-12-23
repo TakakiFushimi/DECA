@@ -30,16 +30,20 @@ def calculate_loss_between_images(source_path, generate_path, target_path, devic
 
 def get_image_list(folder_path):
     # 指定フォルダ内のすべての画像ファイルのパスを取得
-    return [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg'))]
+    return sorted([os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg'))])
 
 if __name__ == "__main__":
     # 使用するデバイスを指定（GPUがあればGPU、なければCPU）
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # フォルダのパスを指定
-    generate_folder = '../ghost-train/examples/results/id200-enhanced8/crop/'
+    generate_folder = '../ghost-train/examples/results/ghost/crop/'
+    generate_folder = '../ghost-train/examples/quantitative-evaluation/test/crop/'
     source_folder = '../ghost-train/examples/quantitative-evaluation/source_images/crop/'
+    source_folder = '../ghost-train/examples/quantitative-evaluation/test/crop/t/'
+    
     target_folder = '../ghost-train/examples/quantitative-evaluation/target_images/'
+    target_folder = '../ghost-train/examples/quantitative-evaluation/test/crop/t/'
 
     # フォルダ内のすべての画像をリストに取得
     generate_list = sorted(get_image_list(generate_folder))
@@ -50,7 +54,7 @@ if __name__ == "__main__":
     count = 0  # 画像ペアの総数をカウント
 
     # 結果を保存するファイルを開く
-    with open('procrustes_loss_results_id200.txt', 'w') as result_file:
+    with open('procrustes_results/procrustes_loss_results_test.txt', 'w') as result_file:
         result_file.write("Procrustes Loss Results:\n")
 
         # すべてのリストの長さを最小に合わせる（リスト間の不整合を回避）

@@ -6,7 +6,7 @@ from decalib.utils import util
 
 def get_image_list(folder_path):
     """ 指定されたフォルダ内の画像ファイルをリストに取得 """
-    return [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg'))]
+    return sorted([os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.png', '.jpg', '.jpeg'))])
 
 def crop_and_save_images(input_folder, output_folder, detector='fan'):
     """ 指定されたフォルダ内の画像を顔検出でクロップし、出力フォルダに保存する """
@@ -39,7 +39,7 @@ def crop_and_save_images(input_folder, output_folder, detector='fan'):
         print(f"保存しました: {save_path}")
 
 if __name__ == "__main__":
-    input_folder = "../ghost-train/examples/quantitative-evaluation/source_images/"
-    output_folder = "../ghost-train/examples/quantitative-evaluation/source_images/crop/"
+    input_folder = "../ghost-train/examples/quantitative-evaluation/test/"
+    output_folder = "../ghost-train/examples/quantitative-evaluation/test/crop/"
     
     crop_and_save_images(input_folder, output_folder, detector='fan')
